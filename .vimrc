@@ -27,6 +27,10 @@ set expandtab		" insert spaces instead of tab literals
 set shiftwidth=4	" custom width for shift
 set tabstop=4		" custom width for tab
 
+" highlight any lines that go over specified character limit
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
 " custom location for undo directory
 set undodir=$HOME/.vim/undo
 
