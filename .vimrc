@@ -34,11 +34,6 @@ match OverLength /\%81v.\+/
 " custom location for undo directory
 set undodir=$HOME/.vim/undo
 
-" enable mouse interaction if supported by terminal
-if has('mouse')
-    set mouse=a		
-endif
-
 " enable syntax and search highlighting if the terminal has colours
 if &t_Co > 2 || has("gui_running")
   syntax on
