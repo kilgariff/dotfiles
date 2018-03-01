@@ -1,21 +1,21 @@
 " Ross Kilgariff custom vimrc file
 
+" Require vim (not vi)
+set nocompatible
+
+" Ensure project-specific .vimrc files have limited permissions
 set exrc
 set secure
 
-" When started as "evim", evim.vim will already have done these settings.
+" When started as "evim", evim.vim will already have done these settings
 if v:progname =~? "evim"
   finish
 endif
 
-" use vim settings, rather than vi settings (much better!).
-" this must be first, because it changes other options as a side effect.
-set nocompatible
-
-" enable syntax highlighting
+" Enable syntax highlighting
 syntax on
 
-" allow backspacing over everything in insert mode
+" Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 set nobackup		" don't create a backup file, use versions instead
@@ -29,6 +29,7 @@ set incsearch		" do incremental searching
 set expandtab		" insert spaces instead of tab literals
 set shiftwidth=4	" custom width for shift
 set tabstop=4		" custom width for tab
+set laststatus=2	" keep status bar up
 
 " highlight any lines that go over specified character limit
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
@@ -43,7 +44,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-" Only do this part when compiled with support for autocommands.
+" Only do this part when compiled with support for autocommands
 if has("autocmd")
 
   " Enable file type detection.
@@ -52,11 +53,11 @@ if has("autocmd")
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
 
-  " Put these in an autocmd group, so that we can delete them easily.
+  " Put these in an autocmd group, so that we can delete them easily
   augroup vimrcEx
   au!
 
-  " For all text files set 'textwidth' to 78 characters.
+  " For all text files set 'textwidth' to 78 characters
   autocmd FileType text setlocal textwidth=78
 
   " When editing a file, always jump to the last known cursor position.
@@ -73,7 +74,7 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+    set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
 
@@ -85,6 +86,14 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
+" ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" netrw settings
+let g:netrw_banner = 0
+
+" wildmenu
+set wildmenu
+set wildmode=longest:full,full " Display Vim command mode autocompletion list

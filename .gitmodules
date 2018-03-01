@@ -1,0 +1,3 @@
+[submodule ".vim/ctrlp.vim"]
+	path = .vim/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim
